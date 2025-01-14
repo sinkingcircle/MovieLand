@@ -26,6 +26,14 @@ const movie1 = {
 const App = () => {
 
   const[movies, setMovies] = useState([]);
+  const[searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    searchMovies("dexter");
+  
+  
+  } , []
+  );
   
 
 
@@ -40,12 +48,7 @@ const App = () => {
 
 
 
-useEffect(() => {
-  searchMovies("dexter");
 
-
-} , []
-);
 
 
   return(
@@ -57,8 +60,8 @@ useEffect(() => {
 
         <input
           placeholder="Search for a movie"
-          value="Superman"
-          onChange={() => {}}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)} 
 
 
           />
@@ -66,7 +69,7 @@ useEffect(() => {
           <img  
             src={search}
             alt = "search"
-            onclick={() => {}}
+            onClick={() => searchMovies(searchTerm)}
             />
 
 
@@ -85,7 +88,7 @@ useEffect(() => {
         </div>
         ):
         (
-          <div className="empty"><h2>NO movies found</h2></div>
+          <div className="empty"><h2>No movies found</h2></div>
         )
 
       }
