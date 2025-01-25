@@ -15,6 +15,30 @@
 body {
   font-family: var(--font-roboto);
   background-color: #212426;
+  position: relative;
+  /* overflow: hidden; */
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background: white;
+  z-index: -1;
+  pointer-events: none;
+  animation: shootingStar 2s linear infinite;
+}
+
+@keyframes shootingStar {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .app {
@@ -231,3 +255,4 @@ h1 {
     margin: 1rem;
   }
 }
+
